@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Routes} from 'react-router-dom';
+import {HomePage} from './pages/HomePage';
+import {Navigation} from './components/Navigation/Navigation';
+import {Page404} from './pages/Page404';
+import {MoviesPage} from './pages/MoviesPage';
+import {SeriesPage} from './pages/SeriesPage';
+import {CartoonsPage} from './pages/CartoonsPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Navigation/>
+            <div className='bg-slate-700 w-screen h-screen'>
+                <Routes>
+                    <Route path='/' element={<HomePage/>}/>
+                    <Route path='/movies' element={<MoviesPage/>}/>
+                    <Route path='/series' element={<SeriesPage/>}/>
+                    <Route path='/cartoons' element={<CartoonsPage/>}/>
+                    <Route path='/*' element={<Page404/>}/>
+                </Routes>
+            </div>
+        </>
+    )
 }
 
-export default App;
+export default App
