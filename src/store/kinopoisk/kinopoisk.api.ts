@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {IMovie, ServerResponse} from '../../models/models';
+import {IMovie, ISingleMovie, ServerResponse} from '../../models/models';
 
 export const kinopoiskApi = createApi({
     reducerPath: 'kinopoisk/api',
@@ -20,8 +20,13 @@ export const kinopoiskApi = createApi({
                 }
             }),
             transformResponse: (response: ServerResponse<IMovie>) => response.docs
+        }),
+        getSingleMovie: build.query<ISingleMovie, number>({
+            query: (id: number) => ({
+                url: `/v1.3/movie/${id}`
+            })
         })
     })
 })
 
-export const {useSearchMovieQuery} = kinopoiskApi
+export const {useSearchMovieQuery, useLazyGetSingleMovieQuery} = kinopoiskApi

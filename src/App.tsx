@@ -6,6 +6,7 @@ import {Page404} from './pages/Page404';
 import {MoviesPage} from './pages/MoviesPage';
 import {SeriesPage} from './pages/SeriesPage';
 import {CartoonsPage} from './pages/CartoonsPage';
+import {SingleMovie} from './pages/SingleMovie';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path='/movies' element={<MoviesPage/>}/>
                     <Route path='/series' element={<SeriesPage/>}/>
                     <Route path='/cartoons' element={<CartoonsPage/>}/>
+                    <Route path='/singlemovie' element={<SingleMovie/>}/>
                     <Route path='/*' element={<Page404/>}/>
                 </Routes>
             </div>
