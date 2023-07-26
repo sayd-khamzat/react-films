@@ -1,13 +1,18 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {IMovie, ISingleMovie, ServerResponse} from '../../models/models';
 
+interface IGetMoviesParams {
+    type: string
+    page: number
+}
+
 export const kinopoiskApi = createApi({
     reducerPath: 'kinopoisk/api',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.kinopoisk.dev',
         headers: {
-            // 'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
-            'X-API-KEY': '3N90HJG-YSTM4G3-GC474H9-F69567P'
+            'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
+            // 'X-API-KEY': '3N90HJG-YSTM4G3-GC474H9-F69567P'
         }
     }),
     endpoints: build => ({
@@ -27,14 +32,17 @@ export const kinopoiskApi = createApi({
                 url: `/v1.3/movie/${id}`
             })
         }),
-        getMovies: build.query<ServerResponse<ISingleMovie>, string>({
-            query: (type: string) => ({
-                url: `/v1.3/movie`,
-                params: {
-                    type: type,
-                    page: 2
+        getMovies: build.query<ServerResponse<ISingleMovie>, IGetMoviesParams>({
+            query: (params) => {
+                const {type, page} = params
+                return {
+                    url: `/v1.3/movie`,
+                    params: {
+                        type: type,
+                        page: page
+                    }
                 }
-            })
+            }
         })
     })
 })
