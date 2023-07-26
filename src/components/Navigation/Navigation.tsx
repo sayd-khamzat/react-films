@@ -6,7 +6,7 @@ export function Navigation() {
     return (
         <div className='h-[80px] shadow-md bg-slate-300 font-semibold text-slate-800 text-xl flex items-center'>
             <span>
-                <NavLink to='/' className='font-bold px-6 hover:text-indigo-600 transition-colors'>React Films</NavLink>
+                <NavLink to='/' className='font-bold px-6 text-indigo-600'>React Films</NavLink>
                 <NavLink to='/movies' className={navData => navData.isActive
                     ? 'ml-60 transition-colors text-indigo-600'
                     : 'ml-60 hover:text-indigo-600 transition-colors'}>Фильмы</NavLink>

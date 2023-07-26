@@ -7,6 +7,7 @@ import {MoviesPage} from './pages/MoviesPage';
 import {SeriesPage} from './pages/SeriesPage';
 import {CartoonsPage} from './pages/CartoonsPage';
 import {SingleMovie} from './pages/SingleMovie';
+import {Footer} from './components/Footer/Footer';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/singlemovie' element={<SingleMovie/>}/>
                     <Route path='/*' element={<Page404/>}/>
                 </Routes>
+                <Footer/>
             </div>
         </>
     )
