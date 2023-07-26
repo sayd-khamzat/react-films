@@ -1,20 +1,19 @@
-import {ISingleMovie} from '../../models/models';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface KinopoiskState {
-    singleMovie: ISingleMovie | undefined
+    movieId: number | null
 }
 
 const initialState: KinopoiskState = {
-    singleMovie: undefined
+    movieId: null
 }
 
 export const kinopoiskSlice = createSlice({
     name: 'kinopoisk',
     initialState: initialState, // можно просто initialState, так как название ключа и значения одинаковы
     reducers: {
-        addMovie(state, action: PayloadAction<ISingleMovie | undefined>) {
-            state.singleMovie = action.payload
+        addMovieId(state, action: PayloadAction<number | null>) {
+            state.movieId = action.payload
         }
     }
 })

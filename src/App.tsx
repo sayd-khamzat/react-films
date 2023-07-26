@@ -12,7 +12,7 @@ function App() {
     return (
         <>
             <Navigation/>
-            <div className='bg-slate-700 w-screen h-screen'>
+            <div className='h-screen'>
                 <Routes>
                     <Route path='/' element={<HomePage/>}/>
                     <Route path='/movies' element={<MoviesPage/>}/>

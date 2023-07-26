@@ -6,7 +6,8 @@ export const kinopoiskApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.kinopoisk.dev',
         headers: {
-            'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
+            // 'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
+            'X-API-KEY': '3N90HJG-YSTM4G3-GC474H9-F69567P'
         }
     }),
     endpoints: build => ({
@@ -21,12 +22,25 @@ export const kinopoiskApi = createApi({
             }),
             transformResponse: (response: ServerResponse<IMovie>) => response.docs
         }),
-        getSingleMovie: build.query<ISingleMovie, number>({
+        getSingleMovie: build.query<ISingleMovie, number | null>({
             query: (id: number) => ({
                 url: `/v1.3/movie/${id}`
+            })
+        }),
+        getMovies: build.query<ServerResponse<ISingleMovie>, string>({
+            query: (type: string) => ({
+                url: `/v1.3/movie`,
+                params: {
+                    type: type,
+                    page: 2
+                }
             })
         })
     })
 })
 
-export const {useSearchMovieQuery, useLazyGetSingleMovieQuery} = kinopoiskApi
+export const {
+    useSearchMovieQuery,
+    useGetSingleMovieQuery, useLazyGetSingleMovieQuery,
+    useLazyGetMoviesQuery
+} = kinopoiskApi
