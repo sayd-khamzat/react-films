@@ -16,6 +16,9 @@ export function Navigation() {
                 <NavLink to='/cartoons' className={navData => navData.isActive
                     ? 'ml-5 transition-colors text-indigo-600'
                     : 'ml-5 hover:text-indigo-600 transition-colors'}>Мультфильмы</NavLink>
+                <NavLink to='/animated-series' className={navData => navData.isActive
+                    ? 'ml-5 transition-colors text-indigo-600'
+                    : 'ml-5 hover:text-indigo-600 transition-colors'}>Анимационные сериалы</NavLink>
             </span>
             <SearchPanel/>
         </div>

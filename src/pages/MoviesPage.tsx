@@ -5,7 +5,12 @@ import {useNavigate} from 'react-router-dom';
 import {Paginator} from '../components/common/Paginator';
 import {Preloader} from '../components/common/Preloader';
 
-export function MoviesPage() {
+interface IMoviesPage {
+    type: string
+    name: string
+}
+
+export function MoviesPage({type, name}: IMoviesPage) {
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -15,11 +20,11 @@ export function MoviesPage() {
 
     useEffect(() => {
         const params = {
-            type: 'movie',
+            type: type,
             page: currentPage
         }
         getMovies(params)
-    }, [currentPage])
+    }, [currentPage, type])
 
     const clickHandler = (id: number) => {
         addMovieId(id)
@@ -29,7 +34,7 @@ export function MoviesPage() {
     return (
         <>
             <div className='mx-auto pt-5 w-[90%] text-slate-800'>
-                <h1 className='text-center text-3xl font-semibold'>Фильмы</h1>
+                <h1 className='text-center text-3xl font-semibold'>{name}</h1>
 
                 {isFetching || isError
                     ? isFetching
