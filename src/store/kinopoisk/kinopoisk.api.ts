@@ -11,8 +11,9 @@ export const kinopoiskApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.kinopoisk.dev',
         headers: {
-            'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
+            // 'X-API-KEY': 'N8XMFNS-C88MVFF-G9ZGFRS-CHC4YF8'
             // 'X-API-KEY': '3N90HJG-YSTM4G3-GC474H9-F69567P'
+            'X-API-KEY': 'S3K4YMD-26BMHXQ-QK403RX-JZTYHGW'
         }
     }),
     endpoints: build => ({
@@ -49,6 +50,6 @@ export const kinopoiskApi = createApi({
 
 export const {
     useSearchMovieQuery,
-    useGetSingleMovieQuery, useLazyGetSingleMovieQuery,
+    useGetSingleMovieQuery,
     useLazyGetMoviesQuery
 } = kinopoiskApi

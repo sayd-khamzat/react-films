@@ -18,7 +18,15 @@ export function MoviesPage({type, name}: IMoviesPage) {
     const {addMovieId} = useActions()
     const navigate = useNavigate()
 
+    useEffect(() => { // установка номера страницы на 1 при первой отрисовке
+        setCurrentPage(1)
+    }, [type])
+
     useEffect(() => {
+        window.scrollTo({ // автопрокрутка вверх при перелистывании страниц
+            top: 0,
+            behavior: 'smooth'
+        })
         const params = {
             type: type,
             page: currentPage
@@ -44,16 +52,15 @@ export function MoviesPage({type, name}: IMoviesPage) {
                     : <div className='grid grid-cols-5 mt-14 justify-items-center'>
                         {moviesData?.docs.map(movie =>
                             <div key={movie.id}>
-                                <div
-                                    className='bg-slate-300 w-[200px] h-[500px] text-sm rounded-lg shadow-md mb-10 hover:text-indigo-600 transition-colors cursor-pointer'>
+                                <div className='bg-slate-300 w-[200px] h-[500px] text-sm rounded-lg shadow-md mb-10 hover:text-indigo-600 transition-colors cursor-pointer'
+                                     onClick={() => clickHandler(movie.id)}>
                                     <img src={movie.poster.url}
-                                         onClick={() => clickHandler(movie.id)}
                                          className='mt-3 rounded'
                                          alt="logo">
                                     </img>
                                     <div className='ml-1 bg-slate-300'>
                                         <h1 className='text-lg font-semibold mb-2'>{movie.name}</h1>
-                                        <p>Жанры: {movie.genres.map((g, i) => <span key={i}>{g.name} </span>)}</p>
+                                        <p>Жанры: {movie.genres.map((g, i) => <span key={i}>{g.name}, </span>)}</p>
                                         <p>{movie.year} <span>год</span></p>
                                         <p>Рейтинг: {movie.rating.kp}</p>
                                     </div>
